@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission To Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+          <h1 style = "font-weight: bold;">Mission to Mars</h1>
+          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrap New Data!</a></p>
+        </div>
+
+    </div>
+<!----latest news ----->
+<div class="container">
+        <h2 style = "font-weight: bold;">Latest Mars News</h2>
+        <h4>{{ mars_info.news_title }}</h4>
+        <p>{{ mars_info.news_p }}</p>
+    </div>
+
+    <!---Featured Image-->
+    <div class="container">
+    <div class="row">
+        <div class = "col-md-8 col-sm-12">
+            <h3 style = "font-weight: bold;">Featured Mars Image</h3>
+            <img style ="max-width: 100%; max-height: auto;" src="{{ mars_info.featured_image_url }}" alt="Mars Image">
+        </div>
+
+    <!--Mars Facts-->
+        <div class = "col-md-4 col-sm-12">
+        <h4 class="title" style ="font-weight:bold">Mars Facts</h4>
+ <!-- <div class="table-responsive" style="overflow-x:auto; overflow-y:auto; max-height:470px; max-width: auto;"> -->
+        <table class="table table-bordered">
+            {{ mars_info.mars_facts|safe}}
+        
+        </table>
+        </div>        
+
+</div>
+</div>
+
+<!---Hemisphere---->
+<div class="container">
+    <h3 class="text-center" style="padding-top: 30px; margin-top: 50px; font-weight: bold;">Mars Hemispheres</h3>
+        <hr class="light">
+        <div class="col-md-12">
+            <div class="row">
+                
+        {% for item in mars_info.IMG %}
+        <div class="col-md-3" style="flex:30%; border: 5px solid gray;">
+        <img class="card-img-top" src="{{ item.img_url }}"  alt="hemisphere1" style="margin:10px 0 10px 0" width="220" height="240"></img>
+        <div class="card-body">
+        <p class="card-text text-center" style="font-size:18px; font-weight: bold;">{{ item.title }}</p>
+    </div>
+
+    </div>
+    {% endfor %}
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
